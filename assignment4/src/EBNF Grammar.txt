@@ -1,0 +1,28 @@
+function        --> header body
+header          --> VARTYPE IDENTIFIER LEFT_PARENTHESIS [arg-decl] RIGHT_PARENTHESIS
+arg-decl        --> VARTYPE IDENTIFIER {COMMA VARTYPE IDENTIFIER }
+body            --> LEFT_BRACKET [statement-list] RIGHT_BRACKET
+statement-list  --> statement {statement}
+statement       --> while-loop | return | assignment | body
+while-loop      --> WHILE_KEYWORD LEFT_PARENTHESIS expression RIGHT_PARENTHESIS statement
+return          --> RETURN_KEYWORD expression EOL
+assignment      --> IDENTIFIER EQUAL expression EOL
+expression      --> term {BINOP term} | LEFT_PARENTHESIS expression RIGHT_PARENTHESIS
+term            --> IDENTIFIER | NUMBER 
+
+
+
+
+LEFT_PARENTHESIS    --> (
+RIGHT_PARENTHESIS   --> )
+LEFT_BRACKET        --> {
+RIGHT_BRACKET       --> }
+WHILE_KEYWORD       --> while
+RETURN_KEYWORD      --> return
+EQUAL               --> =
+COMMA               --> ,
+EOL                 --> ;
+VARTYPE             --> int | void
+IDENTIFIER          --> [a-zA-Z][a-zA-Z0-9]*
+BINOP               --> + | * | != | == | %
+NUMBER              --> [0-9][0-9]*
